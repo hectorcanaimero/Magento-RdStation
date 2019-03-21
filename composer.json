@@ -1,0 +1,27 @@
+{
+    "name": "vanguarda/rdStation",
+    "description": "Rd Station Integration Module",
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0",
+        "magento/magento-composer-installer": "*"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "authors":[
+        {
+            "name": "Héctor Valasquez",
+            "email": "hector@vanguardacomunicacao.com.br"
+        }
+    ],
+    "license": [
+        "proprietary"
+    ],  
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Vanguarda\\RdStation\\": ""
+        }
+    }
+}
