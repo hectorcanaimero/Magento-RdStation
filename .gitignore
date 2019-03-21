@@ -1,5 +1,5 @@
 # Created by https://www.gitignore.io/api/macos,linux,windows,vapor
-.env
+*.env
 ### Linux ###
 *~
 
