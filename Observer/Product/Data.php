@@ -20,7 +20,7 @@ class Data implements ObserverInterface {
         echo "<script>console.log('Firstname => ".$customer->getFirstname()."')</script>";
         echo "<script>console.log('Email => ".$customer->getEmail()."')</script>";
         $data = array(
-            'token_rdstation' => '62d9c778fa41b8ad8d694143731ceb6d',
+            'token_rdstation' => 'xxxxxxxxx',
             'identificador' => 'Magento 2',
             'email' => $customer->getEmail(),
             'nome' => $customer->getFirstname().' '.$customer->getLastname()
