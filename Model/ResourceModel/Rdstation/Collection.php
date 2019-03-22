@@ -1,18 +1,21 @@
-<?php 
+<?php
+namespace Vanguarda\RdStation\Model\ResourceModel\Rdstation;
 
-namespace eTatva\CRUD\Model\ResourceModel\Post;
- 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+
+class Collection extends AbstractCollection
 {
-        /**
-         * Define resource model
-         *
-         * @return void
-         */
-        protected function _construct()
-        {
-                $this->_init('eTatva\CRUD\Model\Post', 'eTatva\CRUD\Model\ResourceModel\Post');
-        }
-}
+    protected $_idFieldName = 'vangi_id';
+	
+	protected $_eventPrefix = 'news_allnews_collection';
 
-?>
+    protected $_eventObject = 'allnews_collection';
+	
+	/**
+     * Define model & resource model
+     */
+	protected function _construct()
+	{
+		$this->_init('Vanguarda\RdStation\Model\Rdstation', 'Vanguarda\RdStation\Model\ResourceModel\Rdstation');
+	}
+}

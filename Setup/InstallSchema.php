@@ -14,7 +14,8 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface{
 			->addColumn('vangi_id', \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER, null,
 				[ 'identity' => true, 'nullable' => false, 'primary'  => true, 'unsigned' => true ], 'Vangi ID')
 			->addColumn('token', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, ['nullable => false'], 'Token')
-			->addColumn( 'url_key', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, [], 'Monitor')
+			->addColumn( 'monitor', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, [], 'Monitor')
+			->addColumn( 'status', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, ['nullable' => false, 'unsigned' => true], 'Status')
 			->addColumn('created_at', \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP, null,
 				['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT], 'Created At')
             ->addColumn('updated_at', \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP, null,

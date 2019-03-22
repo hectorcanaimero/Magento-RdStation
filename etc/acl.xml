@@ -4,16 +4,15 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Vanguarda_RdStation::vangi" title="Vangi" 
+                <resource id="Vanguarda_RdStation::vangi" title="Vang" 
                     sortOrder="100">
-                    <resource id="Vanguarda_RdStation::configuration" title="Config Rd Station" 
-                        sortOrder="31" />
+                    	<resource id="Vanguarda_RdStation::news" title="Config" sortOrder="10">
+					</resource>
                 </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Vanguarda_RdStation::system_config" 
-                                title="Vangi Section" />
+                            <resource id="Vanguarda_RdStation::news_config"  title="Vang Section" />
                         </resource>
                     </resource>
                 </resource>

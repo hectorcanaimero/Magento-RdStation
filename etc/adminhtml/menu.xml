@@ -1,12 +1,21 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
     <menu>
-        <add id="Vanguarda_RdStation::main_menu" title="Vangi" 
+        <add id="Vanguarda_RdStation::vangi" title="VANG" 
             module="Vanguarda_RdStation" sortOrder="20" 
             resource="Vanguarda_RdStation::vangi" />
-        <add id="Vanguarda_RdStation::rdstation" title="Config Rd Station" 
-            module="Vanguarda_RdStation" sortOrder="1" parent="Vanguarda_RdStation::main_menu" 
-            action="config/vangi" 
-            resource="Vanguarda_RdStation::configuration" />
+
+        <add id="Vanguarda_RdStation::title" title="Rd Station" translate="title"   
+            module="Vanguarda_RdStation" parent="Vanguarda_RdStation::vangi" sortOrder="50" dependsOnModule="Vanguarda_RdStation" resource="Vanguarda_RdStation::title"/>
+
+        <add id="Vanguarda_RdStation::rd" title="Rd Station" 
+            module="Vanguarda_RdStation" sortOrder="1" parent="Vanguarda_RdStation::title" 
+            action="vanguarda/rdstation" 
+            resource="Vanguarda_RdStation::rd" />
+
+        <add id="Vanguarda_RdStation::news" title="Habilitar" 
+            module="Vanguarda_RdStation" sortOrder="1" parent="Vanguarda_RdStation::title" 
+            action="vanguarda/rdstation" 
+            resource="Vanguarda_RdStation::news" />
     </menu>
 </config>

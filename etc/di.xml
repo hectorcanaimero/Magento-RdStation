@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Vanguarda\RdStation\Api\Data\RdstationInterface" type="Vanguarda\RdStation\Model\Rdstation" />
+	<preference for="Vanguarda\RdStation\Api\RdstationRepositoryInterface" type="Vanguarda\RdStation\Model\RdstationRepository" />
+    <virtualType name="RdstationGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Vanguarda\RdStation\Model\ResourceModel\Rdstation\Collection</argument>
+        </arguments>
+    </virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="vangi_rdstation_listing_data_source" xsi:type="string">Vanguarda\RdStation\Model\ResourceModel\Rdstation\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Vanguarda\RdStation\Model\ResourceModel\Rdstation\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">vangi_rdstation</argument>
+            <argument name="eventPrefix" xsi:type="string">vangi_rdstation_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">vangi_rdstation_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Vanguarda\RdStation\Model\ResourceModel\Rdstation</argument>
+        </arguments>
+    </type>
+    	<type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="Vanguarda\RdStation\Api\Data\RdstationInterface" xsi:type="string">Vanguarda\RdStation\Api\RdstationRepositoryInterface</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
