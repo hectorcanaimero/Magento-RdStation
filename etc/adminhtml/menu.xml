@@ -5,17 +5,14 @@
             module="Vanguarda_RdStation" sortOrder="20" 
             resource="Vanguarda_RdStation::vangi" />
 
-        <add id="Vanguarda_RdStation::title" title="Rd Station" translate="title"   
-            module="Vanguarda_RdStation" parent="Vanguarda_RdStation::vangi" sortOrder="50" dependsOnModule="Vanguarda_RdStation" resource="Vanguarda_RdStation::title"/>
+        <add id="Vanguarda_RdStation::title" title="Rd Station" 
+            module="Vanguarda_RdStation" sortOrder="10" 
+            parent="Vanguarda_RdStation::vangi" 
+            resource="Vanguarda_RdStation::title" />
 
-        <add id="Vanguarda_RdStation::rd" title="Rd Station" 
+        <add id="Vanguarda_RdStation::config" title="Configurar" 
             module="Vanguarda_RdStation" sortOrder="1" parent="Vanguarda_RdStation::title" 
-            action="vanguarda/rdstation" 
-            resource="Vanguarda_RdStation::rd" />
-
-        <add id="Vanguarda_RdStation::news" title="Habilitar" 
-            module="Vanguarda_RdStation" sortOrder="1" parent="Vanguarda_RdStation::title" 
-            action="vanguarda/rdstation" 
-            resource="Vanguarda_RdStation::news" />
+            action="adminhtml/system_config/edit/section/vanguarda_rdstation" 
+            resource="Vanguarda_RdStation::config" />
     </menu>
 </config>

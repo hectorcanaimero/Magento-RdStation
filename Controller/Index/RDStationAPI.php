@@ -1,7 +1,7 @@
 <?php
 
 namespace Vanguarda\RdStation\Model;
-
+use \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
 class RDStationAPI {
 
   public $token;

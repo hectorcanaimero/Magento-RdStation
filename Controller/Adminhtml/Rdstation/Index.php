@@ -18,13 +18,14 @@ class Index extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-	protected function _isAllowed() {
-		return $this->_authorization->isAllowed('Vanguarda_RdStation::rd');
-	}
+	// protected function _isAllowed() {
+	// 	return $this->_authorization->isAllowed('Vanguarda_RdStation::rd');
+	// }
 
 	public function execute() {
-		$resultPage = $this->resultPageFactory->create();
-		$resultPage->getConfig()->getTitle()->prepend(__('Rd Station'));
-		return $resultPage;
+		// $resultPage = $this->resultPageFactory->create();
+		// //$resultPage->getConfig()->getTitle()->prepend(__('Rd Station'));
+		// return $resultPage;
+		$this->_redirect('adminhtml/system_config/edit/section/vanguarda_rdstation');
 	}
 }
