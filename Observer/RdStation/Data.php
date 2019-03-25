@@ -1,6 +1,6 @@
 <?php 
 
-namespace Vanguarda\RdStation\Observer\Product;
+namespace Vanguarda\RdStation\Observer\RdStation;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
@@ -18,20 +18,15 @@ class Data implements ObserverInterface {
 
     public function execute(Observer $observer) {
         $customer = $observer->getEvent()->getCustomer();
-        // echo "<script>console.log('ID => ".$customer->getId()."')</script>";
-        // echo "<script>console.log('Firstname => ".$customer->getFirstname()."')</script>";
-        // echo "<script>console.log('Email => ".$customer->getEmail()."')</script>";
-        // $token = $this->scopeConfig->getValue('vanguarda_news/general/token', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
-        // echo "<script>console.log('Token => ".$token."')</script>";
         $data = array(
             'token_rdstation' => $this->scopeConfig->getValue('vanguarda_news/general/token', \Magento\Store\Model\ScopeInterface::SCOPE_STORE),
-            'identificador' => 'Magento 2',
+            'identificador' => $this->scopeConfig->getValue('vanguarda_rdstaton/conversor/conversor_cliente', \Magento\Store\Model\ScopeInterface::SCOPE_STORE),
             'email' => $customer->getEmail(),
-            'nome' => $customer->getFirstname().' '.$customer->getLastname()
+            'Nome' => $customer->getFirstname().' '.$customer->getLastname()
         );
         $encodeData = $this->jsonHelper->jsonEncode($data);
-        // echo "<script>console.log('Data => ".$encodeData."')</script>";
-        $ch = curl_init('https://www.rdstation.com.br/api/1.3/conversions');
+        $url = 'https://www.rdstation.com.br/api/1.3/conversions';
+        $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $encodeData);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

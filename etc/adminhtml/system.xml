@@ -4,11 +4,11 @@
         <tab id="vanguarda" translate="label" sortOrder="250">
             <label>Vanguarda</label>
         </tab>
-        <section id="vanguarda_news" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
-            <class>vanguarda-separator</class>
-            <label>Config</label>
+        <section id="vanguarda_rdstaton" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>vanguarda-rdstaton</class>
+            <label>Config RD Sation</label>
             <tab>vanguarda</tab>
-            <resource>Vanguarda_RdStation::news_config</resource>
+            <resource>Vanguarda_RdStation::config</resource>
             <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -16,10 +16,22 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="token" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Token</label>
+                    <label>Token Público</label>
                 </field>
                 <field id="monitoreamento" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Codigo Monitoreamento</label>
+                    <label>URL Codigo Monitoreamento</label>
+                </field>
+            </group>
+            <group id="conversor" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Eventos Conversor</label>
+                <field id="conversor_cliente" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Nome do Evento para Cadastro Cliente</label>
+                </field>
+                <field id="conversor_compra" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Nome do Evento para Compra</label>
+                </field>
+                <field id="conversor_abandono" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Nome do Evento para Abandono de Carrinho</label>
                 </field>
             </group>
         </section>
