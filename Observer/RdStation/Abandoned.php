@@ -2,46 +2,37 @@
 
 namespace Vanguarda\RdStation\Observer\RdStation;
 
-use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use \Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Event\Observer;
 use \Magento\Framework\Json\Helper\Data;
+use \Magento\Framework\App\Config\ScopeConfigInterface;
+
 
 class Abandoned implements ObserverInterface {
-
+    
     protected $jsonHelper;
     protected $scopeConfig;
-
-    public function __construct(Data $jsonHelper, ScopeConfigInterface $scopeConfig) {
+    protected $logger;
+    
+    public function __construct( 
+        Data $jsonHelper, 
+        ScopeConfigInterface $scopeConfig, 
+        \Psr\Log\LoggerInterface $loggerInterface
+    ) {
         $this->jsonHelper = $jsonHelper;
         $this->scopeConfig = $scopeConfig;
+        $this->logger = $loggerInterface;
     }
 
     public function execute(Observer $observer) {
-        $customer = $observer->getEvent()->getCustomer();
-        // echo "<script>console.log('ID => ".$customer->getId()."')</script>";
-        // echo "<script>console.log('Firstname => ".$customer->getFirstname()."')</script>";
-        // echo "<script>console.log('Email => ".$customer->getEmail()."')</script>";
-        // $token = $this->scopeConfig->getValue('vanguarda_news/general/token', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
-        // echo "<script>console.log('Token => ".$token."')</script>";
-        // $data = array(
-        //     'token_rdstation' => $this->scopeConfig->getValue('vanguarda_news/general/token', \Magento\Store\Model\ScopeInterface::SCOPE_STORE),
-        //     'identificador' => 'Magento 2',
-        //     'email' => $customer->getEmail(),
-        //     'nome' => $customer->getFirstname().' '.$customer->getLastname()
-        // );
-        // $encodeData = $this->jsonHelper->jsonEncode($data);
-        // // echo "<script>console.log('Data => ".$encodeData."')</script>";
-        // $ch = curl_init('https://www.rdstation.com.br/api/1.3/conversions');
-        // curl_setopt($ch, CURLOPT_POSTFIELDS, $encodeData);
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_exec($ch);
-        // curl_close($ch);
-        // exit;
+        $quoteItem = $observer->getEvent()->getItem();
+        if (!$quoteItem->getId() && !$quoteItem->getParentItem()) {
+            $productId = $quoteItem->getProductId();
+            $this->logger->debug($productId);
+        }
+        printf($quoteItem);
+        die();
     }
-
 }
-
 
 ?>

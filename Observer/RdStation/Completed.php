@@ -13,6 +13,7 @@ class Completed implements ObserverInterface {
     protected $scopeConfig;
     protected $_customerRepositoryInterface;
     protected $customer;
+    private $logger;
 
     public function __construct(
         \Magento\Customer\Api\CustomerRepositoryInterface $customerRepositoryInterface,
@@ -20,7 +21,8 @@ class Completed implements ObserverInterface {
         \Magento\Sales\Api\OrderRepositoryInterface $orderRepositoryInterface,
         \Magento\Customer\Model\Customer $customer,
         \Magento\Framework\Json\Helper\Data  $jsonHelper, 
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        \Psr\Log\LoggerInterface $logger
     ) {  
         $this->_orderRepositoryInterface = $orderRepositoryInterface;
         $this->_checkoutSession = $checkoutSession;
@@ -28,6 +30,7 @@ class Completed implements ObserverInterface {
         $this->jsonHelper = $jsonHelper;
         $this->scopeConfig = $scopeConfig;
         $this->customer =$customer;
+        $this->logger = $logger;
     }
 
 
@@ -54,7 +57,7 @@ class Completed implements ObserverInterface {
                 'Id_order' => $orderId
             );
             $encodeData = $this->jsonHelper->jsonEncode($data);
-            echo "<script>console.log('Data => ".$encodeData."')</script>";
+            // echo "<script>console.log('Data => ".$encodeData."')</script>";
             $url = 'https://www.rdstation.com.br/api/1.3/conversions';
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $encodeData);

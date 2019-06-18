@@ -1,0 +1,11 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Vanguarda\RdStation\Block\Code" 
+                name="vanguarda.rdstation.cms" 
+                template="Vanguarda_RdStation::code.phtml" 
+                after="-" 
+                ifconfig="vanguarda_rdstation/general/enabled" />
+        </referenceContainer>
+    </body>
+</page>
